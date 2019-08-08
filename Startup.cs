@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ArticleApi.Data;
 using ArticleApi.Data.Repositories;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +33,7 @@ namespace ArticleApi
                 Configuration.GetConnectionString("applicationDbContextConnection")
             ));
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IArticleRepository, ArticleRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
